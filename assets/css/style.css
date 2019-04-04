@@ -1,25 +1,52 @@
 @charset "UTF-8";
 /* CSS Document */
 
+.top-bar { background: #252525; }
 
-body {background: #262222;}
+/* #252525 */
 
+.menu-text {color: #b8318a; 
+			background: #252525; }
+.top-bar ul {background: #252525;}
+
+body {background: #252525;}
+
+
+
+footer {
+	position: absolute;
+    top: 100%;
+    padding: 6px 0px 6px 0px;
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    background: #39373a; 
+    /* background-image: linear-gradient(to right, #9a1098 , #6711c7); */
+   /*  border-top: 1px solid #ffffff59; */
+} 
 
 .button { 
 	background: #262222;
 	border-radius: 8px;
 }
+
+
 .row { max-width: none !important; }
 
 
 .columns { padding: 0px 1px 0px 1px !important; }
 
 
-.hero-search-filter-content { 
-  background-image: linear-gradient(to right, #9a1098 , #6711c7);
-  background-image: url("parrallax.png");
+.hero-search-filter-content { background-image: linear-gradient(to right, #9a1098 , #6711c7);
+/* The image used */
+      /* background-image: url("party.png"); */
+	/* background-image: linear-gradient(to right, #9a1098 , #6711c7); */
+ 
+
+  /* Set a specific height */
   height: 500px; 
-/* Create the parallax scrolling effect */
+
+  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
