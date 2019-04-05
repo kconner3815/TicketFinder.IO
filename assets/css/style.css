@@ -87,11 +87,21 @@ a:hover {color: #981199;}
  color: #ffffff;
 }
 
-.buy-ticket-btn { border: 2px solid #fff;
-			border-radius: 20px;} 
+.buy-ticket-btn { 
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 3px 8px 3px 8px;
+    background: #95129b;
+    margin: 10px;
+}}
 
-.calendar-btn { border: 2px solid #fff;
-			border-radius: 20px;} 
+.calendar-btn { 
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 3px 8px 3px 8px;
+    background: #95129b;
+    margin: 10px;
+}} 
 
 /* search bar form */
 .hero-search-filter {
