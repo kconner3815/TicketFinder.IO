@@ -1,85 +1,64 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>project #3</title>
-	  <!-- Add favicon later-->
-	  <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
-    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-    <link rel="stylesheet" href="assets/css/foundation.css">
 
-	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TicketFinder.io</title>
+  <!-- Add favicon later-->
+  <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  <link rel="stylesheet" href="assets/css/foundation.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script src="assets/javascript/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="assets/javascript/app.js"></script>
 
-	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	  <link rel="stylesheet" href="assets/css/style.css">
-	  
-	  
-	 
-	  
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script src="assets/javascript/app.js"></script>
+</head>
 
-	 
-  </head>
-  <body>
+<body>
 
-    <!-- Start Top Bar -->
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li class="menu-text">TicketFinder.IO</li>
-          
-        </ul>
-      </div>
-		
-		
-		
-		<div class="top-bar-right">
-        <ul class="menu">
-          
-          <li><a href="#" id="sign-in-btn">Sign In</a></li>
-        </ul>
-      </div>
-      
+  <!-- Start Top Bar -->
+
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">TicketFinder.io</li>
+      </ul>
     </div>
-    <!-- End Top Bar -->
 
-    <header class="hero-search-filter">
-  <div class="hero-search-filter-content">
-	  
-      <h1 class="header">Find Your Event</h1>
-	  
-	  <h5>Use the search below to find local events and add them to your calander </h5>
-	  <br>
-	  <br>
-	  
-	  
-    <form class="hero-search-filter-form" action="">
-      <label for="city-input">City</label>
-      <input id="city-input" class="hero-search-filter-form-find" type="text" />
-      <div class="divider">&nbsp;</div>
-      <label for="date-input">Date</label>
-      <input id="date-input" class="hero-search-filter-form-near" type="text" />
-      <button class="button" id="search-button"><i class="fa fa-search"></i></button>
-    </form>
-    
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><a href="#" id="sign-in-btn">Sign In</a></li>
+      </ul>
+    </div>
   </div>
-</header>
 
+  <!-- End Top Bar -->
 
-    
-    <br>
-	  
-	  
-	  <br>
-
-<div id="event-display"></div>
-	  
-	  
-
-    </body>
+  <header class="hero-search-filter">
+    <div class="hero-search-filter-content">
+      <h1 class="header">Find Your Event</h1>
+      <h5>Use the search below to find local events and add them to your calander </h5>
+      <br>
+      <br>
+      <form class="hero-search-filter-form" action="">
+        <label for="city-input">City</label>
+        <input id="city-input" class="hero-search-filter-form-find" type="text" />
+        <div class="divider">&nbsp;</div>
+        <label for="date-input">Date</label>
+        <input id="date-input" class="hero-search-filter-form-near" type="text" />
+        <button class="button" id="search-button"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </header>
+  <br>
+  <br>
+  <div id="event-display"></div>
+</body>
 </html>
-
-
-
