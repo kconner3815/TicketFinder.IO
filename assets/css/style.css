@@ -2,6 +2,13 @@
 /* CSS Document */
 
 
+
+
+
+
+
+
+
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css?family=Raleway|Teko');
 
@@ -18,7 +25,7 @@
 
 body {background: #252525;}
 
-h1 {
+.header {
 	font-family: 'Pacifico', cursive;
     color: #f7ddee;
     text-shadow: 2px 2px #444143;
@@ -204,16 +211,5 @@ a:hover {color: #981199;}
 
 /* end search bar form */
 
-.container {
-  margin:auto;
-  margin-bottom: 20px;
-}
 
-.event-img {
-  width: auto;
-  height: auto;
-}
-.col-6 {
-  color: #ffffff;
-}
-
+  
