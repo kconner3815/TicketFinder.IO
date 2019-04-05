@@ -204,5 +204,16 @@ a:hover {color: #981199;}
 
 /* end search bar form */
 
+.container {
+  margin:auto;
+  margin-bottom: 20px;
+}
 
-  
+.event-img {
+  width: auto;
+  height: auto;
+}
+.col-6 {
+  color: #ffffff;
+}
+
