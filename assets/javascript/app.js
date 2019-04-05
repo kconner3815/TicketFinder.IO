@@ -71,8 +71,7 @@ $(document).ready(function () {
                     var eventVenueDisplay = $("<h3>@ " + eventVenue + "</h3>");
                     eventVenueDisplay.appendTo(eventInfoCol);
 
-                    var ticketButtonDisplay = $("<a href=" + ticketLink + "><button>Buy Tickets</button></a>");
-                    ticketButtonDisplay.addClass("buy-ticket-btn");
+                    var ticketButtonDisplay = $("<a href=" + ticketLink + "><button class='buy-ticket-btn'>Buy Tickets</button></a>");
                     ticketButtonDisplay.appendTo(eventInfoCol);
 
                     var calendarButtonDisplay = $("<button>");
