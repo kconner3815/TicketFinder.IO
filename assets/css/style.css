@@ -1,29 +1,44 @@
 @charset "UTF-8";
 /* CSS Document */
 
+
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Teko');
+
+
 .top-bar { background: #252525; }
 
-/* #252525 */
 
-.menu-text {color: #b8318a; 
-			background: #252525; }
+
+.menu-text {
+	color: #b8318a; 
+	background: #252525; }
+
 .top-bar ul {background: #252525;}
 
 body {background: #252525;}
 
+h1 {
+	font-family: 'Pacifico', cursive;
+    color: #f7ddee;
+    text-shadow: 2px 2px #444143;
+    font-size: 3em;
+	text-align: center;
+}
 
-
-footer {
-	position: absolute;
-    top: 100%;
-    padding: 6px 0px 6px 0px;
+h5 { 
+	color: #e2b8e4;
+	font-family: 'Raleway', sans-serif;
+    padding: 10px;
     text-align: center;
-    width: 100%;
-    color: #fff;
-    background: #39373a; 
-    /* background-image: linear-gradient(to right, #9a1098 , #6711c7); */
-   /*  border-top: 1px solid #ffffff59; */
-} 
+}
+
+
+a {color: #d2cece;}
+
+
+a:hover {color: #981199;}
+
 
 .button { 
 	background: #262222;
@@ -37,20 +52,34 @@ footer {
 .columns { padding: 0px 1px 0px 1px !important; }
 
 
-.hero-search-filter-content { background-image: linear-gradient(to right, #9a1098 , #6711c7);
-/* The image used */
-      /* background-image: url("party.png"); */
+.hero-search-filter-content { 
+	background-image: linear-gradient(to right, #9a1098 , #6711c7);
+    /* background-image: url("/assets/images/party.png"); */
 	/* background-image: linear-gradient(to right, #9a1098 , #6711c7); */
- 
+    /* Set a specific height */
+    height: 500px; 
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-  /* Set a specific height */
-  height: 500px; 
 
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;}
+.container {
+ margin:auto;
+ margin-bottom: 20px;
+}
+
+.event-img {
+ width: auto;
+ height: auto;
+}
+
+.col-6 {
+ color: #ffffff;
+}
+
 
 
 /* search bar form */
@@ -153,8 +182,12 @@ footer {
 
 @media screen and (max-width: 39.9375em) {
   .hero-search-filter-form {
-    width: 95%;
+    width: 83%;
+    margin-bottom: -34px;
   }
+	
+
+	
 }
 
 .hero-search-filter-form-find,
@@ -168,8 +201,6 @@ footer {
   border: 0;
   box-shadow: none;
 }
-
-
 
 /* end search bar form */
 
@@ -185,3 +216,4 @@ footer {
 .col-6 {
   color: #ffffff;
 }
+
