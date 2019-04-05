@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     var apikey = "&apikey=uBAJZ1xFbGFg9COL6Nukmnihg3I4Akl8";
     var rootURL = "https://app.ticketmaster.com/discovery/v2/";
     var parameter = "events.json?";
@@ -33,13 +32,6 @@ $(document).ready(function () {
                     var eventImage = (result[i].images[9].url); //image pull
                     var ticketLink = (result[i].url); // ticket link
                     var eventVenue = (result[i]._embedded.venues[0].name); // venue
-
-                    // console.log(eventName);
-                    // console.log(eventType);
-                    // console.log(eventDate);
-                    // console.log(eventImage);
-                    // console.log(ticketLink);
-                    // console.log(eventVenue);
 
                     var eventDiv = $("<div>");
                     eventDiv.addClass("container");
@@ -79,20 +71,53 @@ $(document).ready(function () {
                     calendarButtonDisplay.addClass("calendar-btn");
                     calendarButtonDisplay.appendTo(eventInfoCol);
 
-                    // eventDiv.append(eventImageDisplay);
-                    // eventDiv.append(eventNameDisplay);
-                    // eventDiv.append(eventDateDisplay);
-                    // eventDiv.append(eventTypeDisplay)
-                    // eventDiv.append(eventVenueDisplay)
-                    // eventDiv.append(ticketButtonDisplay);
-                    // eventDiv.append(calendarButtonDisplay);
                     $("#event-display").prepend(eventDiv)
-
                 };
             },
             error: function (xhr, status, err) {
                 // This time, we do not end up here!
             }
         })
+    })
+
+    $("#sign-in-btn").on("click", function () {
+
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/calendar');
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            console.log(token);
+            // Grabs the user profile
+            var userProfile = result.additionalUserInfo.profile;
+            // Grabs display name
+            var displayName = result.user.displayName;
+
+            //once signed in, changed sign in button to displayName
+            $("#sign-in-btn").text(displayName);
+
+            //pushes user profile to database
+            database.ref().push(userProfile);
+
+        }).catch(function (error) {
+
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            // The email of the user's account used.
+            var email = error.email;
+            
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+            console.log(errorCode);
+            console.log(errorMessage);
+            console.log(email);
+            console.log(credential);
+
+        });
+
+
     })
 })
