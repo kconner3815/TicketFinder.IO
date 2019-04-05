@@ -90,6 +90,9 @@ a:hover {color: #981199;}
 .buy-ticket-btn { border: 2px solid #fff;
 			border-radius: 20px;} 
 
+.calendar-btn { border: 2px solid #fff;
+			border-radius: 20px;} 
+
 /* search bar form */
 .hero-search-filter {
   background: url("https://images.pexels.com/photos/115095/pexels-photo-115095.jpeg?w=940&h=650&auto=compress&cs=tinysrgb") center center no-repeat;
