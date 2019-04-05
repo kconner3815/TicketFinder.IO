@@ -11,6 +11,12 @@
 
 	 
 	  <link rel="stylesheet" href="assets/css/style.css">
+	  
+	  
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	  
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="assets/javascript/app.js"></script>
 
 	 
   </head>
@@ -52,12 +58,12 @@
 	  
 	  
     <form class="hero-search-filter-form" action="">
-      <label for="findtext">City</label>
-      <input id="findtext" class="hero-search-filter-form-find" type="text" />
+      <label for="city-input">City</label>
+      <input id="city-input" class="hero-search-filter-form-find" type="text" />
       <div class="divider">&nbsp;</div>
-      <label for="findlocate">Date</label>
-      <input id="findlocate" class="hero-search-filter-form-near" type="text" />
-      <button class="button"><i class="fa fa-search"></i></button>
+      <label for="date-input">Date</label>
+      <input id="date-input" class="hero-search-filter-form-near" type="text" />
+      <button class="button" id="search-button"><i class="fa fa-search"></i></button>
     </form>
     
   </div>
