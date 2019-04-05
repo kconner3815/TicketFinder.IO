@@ -87,7 +87,8 @@ a:hover {color: #981199;}
  color: #ffffff;
 }
 
-
+.buy-ticket-btn { border: 2px solid #fff;
+			border-radius: 20px;} 
 
 /* search bar form */
 .hero-search-filter {
