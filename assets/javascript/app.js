@@ -82,6 +82,15 @@ $(document).ready(function () {
 
     $("#sign-in-btn").on("click", function () {
 
+        // Sets Auth persistence to SESSION to keep user logged in until browser closes
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(function() {
+        console.log("successfully set the persistence");
+        })
+        .catch(function(error){
+        console.log("failed to set persistence: " + error.message)
+        });
+
         var provider = new firebase.auth.GoogleAuthProvider();
         provider.addScope('https://www.googleapis.com/auth/calendar');
         firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -120,4 +129,15 @@ $(document).ready(function () {
 
 
     })
+
+    // gets user profile if user is already signed in
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+    console.log("user signed in");
+    $("#sign-in-btn").text(user.displayName);
+    } else {
+    console.log("no user signed in");
+    }
+    });
+
 })
