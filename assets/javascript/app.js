@@ -3,17 +3,15 @@ $(document).ready(function () {
     var apikey = "&apikey=uBAJZ1xFbGFg9COL6Nukmnihg3I4Akl8";
     var rootURL = "https://app.ticketmaster.com/discovery/v2/";
     var parameter = "events.json?";
+    var events = [];
 
     $("#search-button").on("click", function (event) {
 
         event.preventDefault();
 
         var city = $("#city-input").val();
-        var date = $("#date-input").val()
-
+        var date = $("#date-input").val();
         var queryURL = rootURL + parameter + "city=" + city + "&startDateTime=" + date + "T00:00:00Z&endDateTime=" + date + "T23:59:00Z" + apikey;
-
-        console.log(queryURL);
 
         $.ajax({
             url: queryURL,
@@ -23,10 +21,12 @@ $(document).ready(function () {
             success: function (response) {
 
                 var result = response._embedded.events;
+                events = [...result];
 
                 for (var i = 0; i < result.length; i++) {
 
                     var eventName = (result[i].name); //event name
+                    var eventId = (result[i].id); //event id
                     var eventType = (result[i].classifications[0].segment.name); //event type
                     var eventDate = (result[i].dates.start.localDate); // date
                     var eventImage = (result[i].images[9].url); //image pull
@@ -51,7 +51,7 @@ $(document).ready(function () {
                     eventInfoCol.addClass("col-6");
                     eventInfoCol.appendTo(eventRow);
 
-                    var eventNameDisplay = $("<h1>" + eventName + "</h1>")
+                    var eventNameDisplay = $("<h1>" + eventName + "</h1>");
                     eventNameDisplay.appendTo(eventInfoCol);
 
                     var eventDateDisplay = $("<h3>When: " + eventDate + "</h3>");
@@ -63,61 +63,82 @@ $(document).ready(function () {
                     var eventVenueDisplay = $("<h3>@ " + eventVenue + "</h3>");
                     eventVenueDisplay.appendTo(eventInfoCol);
 
-                    var ticketButtonDisplay = $("<a href=" + ticketLink + "><button class='buy-ticket-btn'>Buy Tickets</button></a>");
+                    var ticketButtonDisplay = $("<a href=" + ticketLink + " target='_blank'><button class='buy-ticket-btn'>Buy Tickets</button></a>");
                     ticketButtonDisplay.appendTo(eventInfoCol);
 
                     var calendarButtonDisplay = $("<button>");
                     calendarButtonDisplay.text("Add to calendar");
+                    calendarButtonDisplay.attr("data-id", eventId);
                     calendarButtonDisplay.addClass("calendar-btn");
                     calendarButtonDisplay.appendTo(eventInfoCol);
 
-                    $("#event-display").prepend(eventDiv)
+                    $("#event-display").prepend(eventDiv);
+
                 };
             },
             error: function (xhr, status, err) {
-                // This time, we do not end up here!
             }
-        })
-    })
+        });
+    });
+
+    function authenticate() {
+        return gapi.auth2.getAuthInstance()
+            .signIn({ scope: "https://www.googleapis.com/auth/calendar.events" })
+            .then(function (response) {
+                $("#sign-in-btn").text("Welcome, " + response.w3.ofa);
+                console.log("Sign-in successful");
+            },
+                function (err) { console.error("Error signing in", err); });
+    };
+
+    function loadClient() {
+        return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/calendar/v3/rest")
+            .then(function () {
+                console.log("GAPI client loaded for API");
+            },
+                function (err) { console.error("Error loading GAPI client for API", err); });
+    };
+
+    function getCalendarId() {
+        return gapi.client.calendar.calendarList.get({
+            "calendarId": "primary"
+        }).then(function () {
+            console.log("Calendar Id recieved");
+        },
+            function (err) { console.error("Execute error", err); });
+    };
+
+    gapi.load("client:auth2", function () {
+        gapi.auth2.init({ client_id: "761159949102-63fctob7rap5qtud1rd70o6e9rt5kplk.apps.googleusercontent.com" });
+    });
 
     $("#sign-in-btn").on("click", function () {
+        authenticate().then(loadClient);
+    });
 
-        var provider = new firebase.auth.GoogleAuthProvider();
-        provider.addScope('https://www.googleapis.com/auth/calendar');
-        firebase.auth().signInWithPopup(provider).then(function (result) {
+    $(document).on("click", ".calendar-btn", function () {
 
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
-            console.log(token);
-            // Grabs the user profile
-            var userProfile = result.additionalUserInfo.profile;
-            // Grabs display name
-            var displayName = result.user.displayName;
+        getCalendarId();
 
-            //once signed in, changed sign in button to displayName
-            $("#sign-in-btn").text(displayName);
+        var selectedEventId = $(this).attr("data-id");
+        var selectedEvent = events.find(event => event.id === selectedEventId);
+        var data = {
+            "summary": selectedEvent.name + " @ " + selectedEvent._embedded.venues[0].name,
+            "end": {
+                "date": selectedEvent.dates.start.localDate,
+            },
+            "start": {
+                "date": selectedEvent.dates.start.localDate,
+            },
+        };
 
-            //pushes user profile to database
-            database.ref().push(userProfile);
-
-        }).catch(function (error) {
-
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-
-            // The email of the user's account used.
-            var email = error.email;
-            
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            console.log(errorCode);
-            console.log(errorMessage);
-            console.log(email);
-            console.log(credential);
-
-        });
-
-
-    })
-})
+        return gapi.client.calendar.events.insert({
+            "calendarId": "primary",
+            "resource": data,
+        }).then(function () {
+            console.log("Event Successfully added");
+            alert("Event successfully added");
+        },
+            function (err) { console.error("Execute error", err); });
+    });
+});
