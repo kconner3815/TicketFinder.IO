@@ -54,7 +54,7 @@ $(document).ready(function () {
                     var eventNameDisplay = $("<h1>" + eventName + "</h1>");
                     eventNameDisplay.appendTo(eventInfoCol);
 
-                    var eventDateDisplay = $("<h3>When: " + eventDate + "</h3>");
+                    var eventDateDisplay = $("<h3>When: " + date + "</h3>");
                     eventDateDisplay.appendTo(eventInfoCol);
 
                     var eventTypeDisplay = $("<h3>Type of Event: " + eventType + "</h3>");
