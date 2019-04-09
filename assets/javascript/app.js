@@ -116,8 +116,16 @@ $(document).ready(function () {
         authenticate().then(loadClient);
     });
 
-    $(document).on("click", ".calendar-btn", function () {
+    function displaySuccessModal() {
+        $("#success-modal").modal({
+            keyboard: true,
+            focus: true,
+            show: true
+        });
+    };
 
+    $(document).on("click", ".calendar-btn", function () {
+    
         getCalendarId();
 
         var selectedEventId = $(this).attr("data-id");
@@ -137,7 +145,7 @@ $(document).ready(function () {
             "resource": data,
         }).then(function () {
             console.log("Event Successfully added");
-            alert("Event successfully added");
+            displaySuccessModal();
         },
             function (err) { console.error("Execute error", err); });
     });

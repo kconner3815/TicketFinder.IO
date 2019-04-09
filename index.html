@@ -8,19 +8,22 @@
   <!-- Add favicon later-->
   <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
   <link rel="stylesheet" href="assets/css/foundation.css">
-
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
-
   <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
   <script src="assets/javascript/firebase.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <script src="https://apis.google.com/js/api.js"></script>
   <script src="assets/javascript/app.js"></script>
-
 </head>
 
 <body>
@@ -43,6 +46,30 @@
 
   <!-- End Top Bar -->
 
+  <!--Start Modal-->
+
+  <div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="success-modal-label"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="success-modal-label">Event Successfully Added</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+          <h4>This event has been successfully added to your Google Calendar!</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal" id="modal-close-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--End Modal-->
+
   <header class="hero-search-filter">
     <div class="hero-search-filter-content">
       <h1 class="header">Find Your Event</h1>
@@ -50,19 +77,18 @@
       <br>
       <br>
       <form class="hero-search-filter-form" action="">
-      <label for="city-input">City</label>
-      <input id="city-input" placeholder="Your City" class="hero-search-filter-form-find" type="text" />
-      <div class="divider">&nbsp;</div>
-      <label for="date-input">Date</label>
-      <input id="date-input" placeholder="YYYY-MM-DD" class="hero-search-filter-form-near" type="text" />
-      <button class="button" id="search-button"><i class="fa fa-search"></i></button>
-    </form>
+        <label for="city-input">City</label>
+        <input id="city-input" placeholder="Your City" class="hero-search-filter-form-find" type="text" />
+        <div class="divider">&nbsp;</div>
+        <label for="date-input">Date</label>
+        <input id="date-input" placeholder="YYYY-MM-DD" class="hero-search-filter-form-near" type="text" />
+        <button class="button" id="search-button"><i class="fa fa-search"></i></button>
+      </form>
     </div>
   </header>
   <br>
   <br>
   <div id="event-display"></div>
 </body>
+
 </html>
-
-

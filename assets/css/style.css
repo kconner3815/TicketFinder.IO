@@ -1,14 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
 
-
-
-
-
-
-
-
-
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css?family=Raleway|Teko');
 
@@ -225,5 +217,28 @@ a:hover {color: #981199;}
 
 /* end search bar form */
 
+/*Begin Modal CSS*/
 
+#modal-close-btn {
+  border: 2px solid #fff;
+  color: #fff;
+  border-radius: 20px;
+  padding: 3px 8px 3px 8px;
+  background: #95129b;
+  margin: 10px;
+}
+.modal-title {
+  font-family: 'Raleway', sans-serif;
+  color: #252525;
+  font-size: 2em;
+	text-align: center;
+}
+.modal-body {
+  font-family: 'Raleway', sans-serif;
+  color: #252525;
+  font-size: 2em;
+	text-align: center;
+}
+
+/*End Modal CSS*/
   
